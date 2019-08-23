@@ -1,0 +1,30 @@
+{
+  // IntelliSense を使用して利用可能な属性を学べます。
+  // 既存の属性の説明をホバーして表示します。
+  // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/start"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch via NPM",
+      "runtimeExecutable": "/Users/keigando/.nodebrew/current/bin/yarn", //"npm",
+      "runtimeArgs": ["dev"],
+      "port": 9229,
+      "env": {
+        "API_key": "e2o02gkSl41m88x5xRhhBviqz",
+        "API_S_key": "kTuclcswEIgErusDzt1tPozOW1rYyz9yYlaRoVDbgP6XYvshdJ"
+
+        //"CLAIMANTAPIADDRESS": "https://api.ddjgox.net/claimant/",
+        // "CLAIMANTAPIADDRESS": "http://localhost:5000/claimant/",
+      },
+      "console": "integratedTerminal"
+    }
+  ]
+}
