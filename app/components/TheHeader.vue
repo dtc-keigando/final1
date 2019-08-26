@@ -8,13 +8,16 @@
     </el-menu-item>
 
     <no-ssr>
-      <el-menu-item index="4" style="float: right;" :route="{ path: '/study/' }">
+      <el-menu-item index="3" style="float: right;" :route="{ path: '/study/' }">
         <span>学習</span>
       </el-menu-item>
-    </no-ssr>
+      <el-menu-item index="4" style="float: right;" :route="{ path: '/s_demo/' }">
+        <span>demo2</span>
+      </el-menu-item>
     <el-menu-item index="5" style="float: right" :route="{ path: '/demo/' }">
       demo
     </el-menu-item>
+    </no-ssr>
   </el-menu>
 </template>
 

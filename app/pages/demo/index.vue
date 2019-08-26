@@ -31,7 +31,7 @@ export default {
     // this.items.push(data);
     // console.log("===============",this.items)ß
     x = data
-    console.log(x)
+    // console.log(x)
   };
 	var Twitter = require('twitter-node-client').Twitter;
 
@@ -45,14 +45,28 @@ export default {
   }
   var twitter = new Twitter(config);
 
-	//Example calls
+  //Example calls
+  console.log(twitter.getUserTimeline({ screen_name: 'cocoa_12', count: '1'}, error, success))
+  //   var promise1 = new Promise(function(resolve) {
+//     setTimeout(function() {
+//     resolve(twitter.getUserTimeline({ screen_name: 'cocoa_12', count: '1'}, error, success))
+//   }, 300);
+//     });
+//   promise1.then(function() {
+//   console.log(x);
+//   // expected output: "foo"
+//   });
 
-  await twitter.getUserTimeline({ screen_name: 'cocoa_12', count: '1'}, error, success);
+// console.log(promise1);
+// expected output: [object Promise]
+
+
+  // twitter.getUserTimeline({ screen_name: 'cocoa_12', count: '1'}, error, success).then(console.log(x))
 
   // twitter.getMentionsTimeline({ count: '10'}, error, success);
   // twitter.getTweet({ id: 1164337828899090432}, error, success);
   // twitter.getSearch({'q':'#haiku','count': 10}, error, success);
-  console.log('---------------\n')
+  // console.log('---------------\n')
 
 
   // console.log("x=",x)

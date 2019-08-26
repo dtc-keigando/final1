@@ -57,18 +57,70 @@
           <h3>コンポーネント間の通信</h3>
         </li>
       </ul><br>
+      <ul type="circle">
+        <li>親→子のデータの受け渡し(値渡し&変数渡し)</li>
+        <div class="text">
+          <p>親から子にデータを渡す場合は、<b>属性</b> でデータを渡し、<b>props</b>で受け取る。
+  親から子に変数としてデータを渡す場合は<b>v-bind</b>を利用して親コンポーネントが持っているデータを渡します。</p>
+        </div>
     <div class="code">
-      <pre class="prettyprint lang-css linenums">
-      .elem {
-      font-size: 16px;
-    }
-    </pre>
+        <pre class="prettyprint lang-html linenums"><code>
+          &lt;div id=&quot;app&quot;&gt;
+          &lt;my-component&gt;&lt;/my-component&gt;
+          &lt;/div&gt;
+        </code></pre>
     </div>
-    <pre class="prettyprint lang-css linenums">
-    .elem {
-      font-size: 16px;
-    }
+    <pre class="prettyprint lang-js linenums">
+      Vue.component(&quot;my-component&quot;, {
+        template: &quot;&lt;child val1=&#039;b&#039; :val2=&#039;a&#039;&gt;&lt;/child&gt;&quot;,
+        data: function() {
+          return {
+            a: 5
+          };
+        }
+    });
     </pre>
+    <div class="text">
+    <p>親から子へは属性で渡します。valという属性を定義し上記の様に格納します。この属性名は任意です。
+  この中でval1は 'b' と言う文字列を子に渡しているのに対して、val2は'a'と言うデータオブジェクトを返す関数を子に伝えている。関数や配列などを子に伝える場合はv-bind(=:)をval2の前につけて渡す必要がある。</p>
+    </div>
+    <pre class="prettyprint lang-js linenums"><code>
+      Vue.component(&quot;child&quot;, {
+        template: &quot;&lt;p&gt;子コンポーネントis {{val1}} {{val2}}&gt;&lt;/p&gt;&quot;,
+        props: {
+          val1: String,
+          val2: Number
+        }
+      });
+    </code></pre>
+    </ul>
+    <ul type="circle">
+      <li>子→親のイベントの発火</li>
+      <pre class="prettyprint lang-js linenums"><code>
+        new Vue({
+          el: &#039;#app&#039;,
+          data: {
+          parentData: &#039;parentDataです&#039;
+          },
+          components: {
+            &#039;my-component&#039; : myComponent
+          }
+        })
+      </code></pre>
+      <div class="text">
+        <p>  ※コンポーネントではデータはオブジェクトを返す関数である必要がある。
+  理由としては、同じコンポーネントの異なるインスタンス間で独立したdataを扱う必要があるため。</p>
+      </div>
+      <pre class="prettyprint lang-js linenums"><code>
+        &lt;div id=&quot;app&quot;&gt;
+          &lt;my-component val=&quot;Aへのデータ&quot;&gt;&lt;/my-component&gt;
+          &lt;my-component v-bind:val=&quot;parentData&quot;&gt;&lt;/my-component&gt;
+        &lt;/div&gt;
+      </code></pre>
+      <div class="text">
+        <p>１つ目の子要素にはテキストを与え、２つ目の子要素にはv-bindを利用し親のデータ(parentData)を与えました。</p>
+      </div>
+    </ul>
     </div>
   </div>
 </template>

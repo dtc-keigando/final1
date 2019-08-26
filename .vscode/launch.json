@@ -13,7 +13,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch via NPM",
+      "name": "Launch via yarn",
       "runtimeExecutable": "/Users/keigando/.nodebrew/current/bin/yarn", //"npm",
       "runtimeArgs": ["dev"],
       "port": 9229,
