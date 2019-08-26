@@ -4,12 +4,15 @@
     <h1 style="text-align: center">New York Time API を利用した新聞記事検索</h1>
     <ul>
       <li>検索する年代と月を入力してください</li>
-      <form id="form" v-on="submit:addEvent">
-      <p>年代 : <input v-model="newEvent.year | yearValidator">　年</p>
-      <li>month(1~12月)</li>
-      <input type="number" name="month" v-model="month" min="0" max="12"/>
-      </form>
-      <button v-on:click="doSearch">記事の検索</button><br>
+
+      <p>年代 : <input type="number" placeholder="ex)2010" v-model.number="newEvent.year"></p>
+      <p>月　 :
+      <input type="number" placeholder="ex)11"  v-model="newEvent.month"/></p>
+      <button v-on:click="doSearch">記事の検索</button><br><br>
+      <ul class="errors">
+        <li v-show="!validation.name">Year and month cannot be empty.</li>
+        <li v-show="!validation.email">Please provide a valid number.</li>
+      </ul>
       <li v-for="item in this.article" :key="item.id">
         <h4>
           <span>{{item.headline.main}}</span>
@@ -23,6 +26,8 @@
 </section>
 </template>
 <script>
+var yearRE = /180[0-9]|18[1-9][0-9]|19[0-9]{2}|200[0-9]|201[0-9]/;
+var monthRE = /[1-9]|1[0-2]/;
 export default {
   async mounted(){
     // console.log(
@@ -43,8 +48,8 @@ export default {
       Top_baseURL: 'https://api.nytimes.com/svc/topstories/v2/',
       API_key: 'EELcfN8de6V7ZJx9c8dJxTCgXy7e1WGY',
       newEvent: {
-        month: 0,
-        year: 0,
+        month: '',
+        year: ''
       },
       article: {},
       validation: {
@@ -58,9 +63,11 @@ export default {
       return this.Act_baseURL + this.year +"/"+ this.month + ".json?api-key=" + this.API_key
     },
     async doSearch() {
-      var items = await this.$axios.$get(this.buildurl())
-      this.article = items.response.docs
-      console.log(this.article)
+      if (this.isValid) {
+        var items = await this.$axios.$get(this.buildurl())
+        this.article = items.response.docs
+        console.log(this.article)
+      }
     },
     addEvent: function (e) {
       e.preventDefault()
@@ -115,5 +122,8 @@ li + li {
 }
 p {
   margin: 8px 0;
+}
+.errors {
+  color: #f00;
 }
 </style>>
