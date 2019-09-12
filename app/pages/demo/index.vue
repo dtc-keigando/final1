@@ -37,10 +37,10 @@ export default {
 
 	//Get this data from your twitter apps dashboard
 	var config = {
-    "consumerKey": "e2o02gkSl41m88x5xRhhBviqz",
-    "consumerSecret": "kTuclcswEIgErusDzt1tPozOW1rYyz9yYlaRoVDbgP6XYvshdJ",
-    "accessToken": "527523351-pz0HIdHvbfr5no7A19d1tmQMtdSat0d4V06pL75J",
-    "accessTokenSecret": "CCKeLcheN0O6phToJwGx4uPN3261XKsoYzEo2g5gzCOSB",
+    "consumerKey": ,
+    "consumerSecret": ,
+    "accessToken":,
+    "accessTokenSecret": ,
     // "callBackUrl": "XXX"
   }
   var twitter = new Twitter(config);
