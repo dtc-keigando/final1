@@ -24,7 +24,7 @@
     "element-ui": "^2.11.1",
     "lodash.clonedeep": "^4.5.0",
     "moment": "^2.24.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "twitter-node-client": "^0.0.6"
   },
   "devDependencies": {
